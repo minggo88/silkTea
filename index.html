@@ -334,6 +334,8 @@ section { position: relative; scroll-margin-top: 64px; }
   margin-bottom: 32px;
 }
 
+.story-break-mobile { display: none; }
+
 /* ===== STORY ===== */
 .story {
   background: #ffffff;
@@ -507,8 +509,7 @@ section { position: relative; scroll-margin-top: 64px; }
 
 .market-main-img {
   width: 100%;
-  height: 480px;
-  object-fit: cover;
+  height: auto;
 }
 
 .market-grid {
@@ -594,11 +595,14 @@ footer .copyright {
   .product-slider-col { order: 1; }
   .product-spec { order: 2; }
   .product-story { padding: 0 24px; }
+  .story-break-desktop { display: none; }
+  .story-break-mobile { display: inline; }
 
   .story {
     padding: 80px 24px;
   }
   .story-img { max-width: 280px; }
+  .story-rule { display: none; }
   .story-desc { font-size: 16px; }
 
   .master {
@@ -625,7 +629,7 @@ footer .copyright {
   .market {
     padding: 80px 24px;
   }
-  .market-main-img { height: 240px; }
+  .market-main-img { width: 90%; height: auto; margin: 0 auto; display: block; }
   .market-grid {
     grid-template-columns: 1fr;
   }
@@ -721,10 +725,10 @@ footer .copyright {
   <div class="product-story">
     <div class="story-label fade-up">STORY</div>
     <div class="story-line fade-up"></div>
-    <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 <br>예로부터 차마고도의 중심지이자 찻잎 집산지로 유명했던 다창입니다.<br>바람이 맑고 청량하기로 유명한 하관지구에서 1902년부터 타차를 생산해온<br>120년이 넘는 유구한 역사가 있는 다창입니다.</p>
-    <p class="fade-up">1941년 봄에 강장다창으로 새롭게 창건한 후 몇 번에 걸쳐 이름을 바꾼 뒤에<br>1950년에 운남성 하관다창으로 개명하여 오늘에 이르고 있습니다.</p>
-    <p class="fade-up">1989년에 하관다창에서 1~2등급의 가장 여린 찻잎으로 만든 100g 중량의 청소타차로,<br>긴압이 강하게 잘 되어서 지금도 원형이 잘 보존되어 있습니다.</p>
-    <p class="fade-up">오랜 세월 정성스럽게 보관된 하관청소타의 깊은 향과 질감을<br>끽다거 안우섭님의 차와 함께한 기록과 함께 소개합니다.</p>
+    <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 <br>예로부터 차마고도의 중심지이자 <br class="story-break-mobile">찻잎 집산지로 유명했던 다창입니다.<br>바람이 맑고 청량하기로 유명한 <br class="story-break-mobile">하관지구에서 1902년부터 타차를 <br class="story-break-mobile">생산해온 <br class="story-break-desktop">120년이 넘는 유구한 <br class="story-break-mobile">역사가 있는 다창입니다.</p>
+    <p class="fade-up">1941년 봄에 강장다창으로 <br class="story-break-mobile">새롭게 창건한 후 몇 번에 걸쳐 <br class="story-break-mobile">이름을 바꾼 뒤에 <br class="story-break-desktop">1950년에 <br class="story-break-mobile">운남성 하관다창으로 개명하여 <br class="story-break-mobile">오늘에 이르고 있습니다.</p>
+    <p class="fade-up">1989년에 하관다창에서 <br class="story-break-mobile">1~2등급의 가장 여린 찻잎으로 <br class="story-break-mobile">만든 100g 중량의 청소타차로,<br>긴압이 강하게 잘 되어서 <br class="story-break-mobile">지금도 원형이 잘 보존되어 있습니다.</p>
+    <p class="fade-up">오랜 세월 정성스럽게 보관된 <br class="story-break-mobile">하관청소타의 깊은 향과 질감을<br>끽다거 안우섭님의 <br class="story-break-mobile">차와 함께한 기록과 함께 소개합니다.</p>
   </div>
 </section>
 
@@ -732,7 +736,7 @@ footer .copyright {
 <section class="story" id="스토리">
   <img src="./img/kkikda.png" class="story-img fade-up" alt="끽다거">
   <div class="story-rule fade-up"></div>
-  <p class="story-desc fade-up">오랜 시간 보이차를 연구하고 수집해온 차 전문기업 끽다거가 현지 답사와 실물 감별을 바탕으로 차의 가치를 보존하였습니다.</p>
+  <p class="story-desc fade-up">오랜 시간 보이차를 연구하고 수집해온 <br class="story-break-mobile">차 전문기업 끽다거가 <br class="story-break-mobile">현지 답사와 실물 감별을 바탕으로 <br class="story-break-mobile">차의 가치를 보존하였습니다.</p>
 </section>
 
 <!-- MASTER -->
