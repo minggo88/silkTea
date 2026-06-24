@@ -554,27 +554,34 @@ section { position: relative; scroll-margin-top: 64px; }
 /* ===== FOOTER ===== */
 footer {
   background: #ffffff;
-  border-top: 1px solid #E8E0D5;
-  padding: 60px 48px;
+  padding: 60px 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-footer img {
-  height: 28px;
+footer .footer-logo {
+  display: block;
 }
 
-footer .tagline {
-  font-size: 14px;
-  color: rgba(44,26,14,0.6);
-  letter-spacing: 1px;
+footer .footer-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(44,26,14,0.2);
+  margin: 0;
+}
+
+footer .footer-info {
+  text-align: left;
+  font-size: 12px;
+  color: rgba(44,26,14,0.5);
+  line-height: 2.0;
 }
 
 footer .copyright {
-  font-size: 12px;
-  color: rgba(44,26,14,0.35);
+  font-size: 11px;
+  color: rgba(44,26,14,0.3);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -637,7 +644,7 @@ footer .copyright {
   .market-links { gap: 12px; }
   .market-link-btn { padding: 14px 28px; font-size: 13px; }
 
-  footer { padding: 48px 24px; }
+  footer { padding: 48px 24px; font-size: 11px; }
 }
 </style>
 </head>
@@ -781,9 +788,15 @@ footer .copyright {
 
 <!-- FOOTER -->
 <footer>
-  <img src="./img/logo.png" alt="Silk Tealeaf">
-  <div class="tagline">끽다거의 차를 엄선하여 전달합니다</div>
-  <div class="copyright">© 2025 Silk Tealeaf. Curated by 끽다거.</div>
+  <img src="./img/logo.png" height="52" class="footer-logo" alt="Silk Tealeaf">
+  <div class="footer-divider"></div>
+  <div class="footer-info">
+    실크티립 주식회사 | 대표 주지헌, 손성훈<br>
+    사업자등록번호 185-88-03489<br>
+    인천광역시 연수구 송도과학로 70, 303호 (송도 AT센터)<br>
+    silktealeaf001@gmail.com | FAX 070-8192-2676
+  </div>
+  <div class="copyright">© 2025 Silk Tealeaf. All rights reserved.</div>
 </footer>
 
 <script>
