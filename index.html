@@ -38,9 +38,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px);
-  transition: background 0.3s, backdrop-filter 0.3s;
+  background: #ffffff;
+  transition: background 0.3s;
 }
 
 header .logo img { height: 36px; }
@@ -80,8 +79,7 @@ header nav a:hover { color: #B8965A; }
   top: 64px;
   left: 0;
   width: 100%;
-  background: rgba(255,255,255,0.98);
-  backdrop-filter: blur(12px);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +103,7 @@ header nav a:hover { color: #B8965A; }
 }
 
 /* ===== SECTION GENERIC ===== */
-section { position: relative; }
+section { position: relative; scroll-margin-top: 64px; }
 
 .fade-up {
   opacity: 0;
@@ -188,7 +186,7 @@ section { position: relative; }
 .product {
   background: #F8F5F0;
   min-height: 100vh;
-  padding: 120px 80px;
+  padding: 120px 180px;
 }
 
 .product-top {
@@ -197,19 +195,24 @@ section { position: relative; }
   gap: 80px;
 }
 
-.product-spec, .product-slider-col {
-  width: 50%;
+.product-spec {
+  width: 40%;
+}
+
+.product-slider-col {
+  width: 60%;
 }
 
 .slider {
   position: relative;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .slider-track {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 10/9;
   overflow: hidden;
   background: #E8E0D5;
 }
@@ -279,13 +282,13 @@ section { position: relative; }
 .product-subtitle {
   font-size: 16px;
   color: #B8965A;
-  margin-bottom: 48px;
+  margin-bottom: 38px;
 }
 
 .spec-row {
   display: flex;
   border-bottom: 1px solid #E8E0D5;
-  padding: 18px 0;
+  padding: 14px 0;
 }
 
 .spec-label {
@@ -365,6 +368,189 @@ section { position: relative; }
   font-family: 'Noto Serif KR', serif;
 }
 
+/* ===== MASTER ===== */
+.master {
+  background: #F8F5F0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.master-top {
+  height: 80px;
+  flex-shrink: 0;
+  margin-bottom: 24px;
+}
+
+.master-label {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #B8965A;
+}
+
+.master-name {
+  font-size: 32px;
+  font-family: "Noto Serif KR", serif;
+  font-weight: 700;
+  color: #2C1A0E;
+}
+
+.master-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  overflow: hidden;
+  width: 85%;
+  margin: 0 auto;
+  max-height: calc((100vh - 160px) * 0.85);
+}
+
+.master-left {
+  min-height: 0;
+}
+
+.master-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.master-right {
+  display: grid;
+  grid-template-rows: 1fr 80px;
+  gap: 8px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.master-main-img {
+  width: 100%;
+  height: 80%;
+  min-height: 0;
+  object-fit: contain;
+  align-self: center;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.master-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.master-thumbs img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.master-thumbs img:hover,
+.master-thumbs img.active {
+  border: 2px solid #B8965A;
+}
+
+/* ===== MARKET ===== */
+.market {
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 80px;
+  box-sizing: border-box;
+}
+
+.market-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #B8965A;
+  margin-bottom: 12px;
+}
+
+.market-line {
+  width: 40px;
+  height: 1px;
+  background: #B8965A;
+  margin: 0 auto 40px;
+}
+
+.market-title {
+  font-size: 48px;
+  font-family: "Noto Serif KR", serif;
+  font-weight: 700;
+  color: #2C1A0E;
+  margin-bottom: 60px;
+}
+
+.market-images {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.market-main-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.market-grid img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  background: #F8F5F0;
+}
+
+.market-links {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  margin-top: 148px;
+}
+
+.market-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 114px;
+  border: 1px solid #B8965A;
+  border-radius: 4px;
+  color: #2C1A0E;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s, color 0.25s;
+}
+
+.market-link-btn:hover {
+  background: #B8965A;
+  color: #ffffff;
+}
+
 /* ===== FOOTER ===== */
 footer {
   background: #ffffff;
@@ -419,6 +605,38 @@ footer .copyright {
   .story-img { max-width: 280px; }
   .story-desc { font-size: 16px; }
 
+  .master {
+    height: auto;
+    min-height: 100vh;
+    padding: 60px 20px;
+  }
+  .master-grid {
+    grid-template-columns: 1fr;
+    max-height: none;
+    overflow: visible;
+  }
+  .master-left { min-height: auto; }
+  .master-left img { height: 60vw; }
+  .master-right {
+    grid-template-rows: auto auto;
+    height: auto;
+    min-height: 0;
+  }
+  .master-main-img { height: 50vw; min-height: auto; }
+  .master-thumbs { height: 60px; }
+  .master-thumbs img { height: 60px; }
+
+  .market {
+    padding: 80px 24px;
+  }
+  .market-main-img { height: 240px; }
+  .market-grid {
+    grid-template-columns: 1fr;
+  }
+  .market-grid img { aspect-ratio: 3/4; }
+  .market-links { gap: 12px; }
+  .market-link-btn { padding: 14px 28px; font-size: 13px; }
+
   footer { padding: 48px 24px; }
 }
 </style>
@@ -429,16 +647,20 @@ footer .copyright {
 <header id="site-header">
   <div class="logo"><img src="./img/logo.png" alt="Silk Tealeaf"></div>
   <nav>
-    <a href="#소개">소개</a>
-    <a href="#스토리">스토리</a>
+    <a href="#소개">제품</a>
+    <a href="#스토리">끽다거</a>
+    <a href="#티마스터">티마스터</a>
+    <a href="#마켓">마켓</a>
   </nav>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
 </header>
 <div class="mobile-nav" id="mobile-nav">
-  <a href="#소개">소개</a>
-  <a href="#스토리">스토리</a>
+  <a href="#소개">제품</a>
+  <a href="#스토리">끽다거</a>
+  <a href="#티마스터">티마스터</a>
+  <a href="#마켓">마켓</a>
 </div>
 
 <!-- HERO -->
@@ -503,10 +725,10 @@ footer .copyright {
   <div class="product-story">
     <div class="story-label fade-up">STORY</div>
     <div class="story-line fade-up"></div>
-    <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 예로부터 차마고도의 중심지이자 찻잎 집산지로 유명했던 다창입니다. 바람이 맑고 청량하기로 유명한 하관지구에서 1902년부터 타차를 생산해온 120년이 넘는 유구한 역사가 있는 다창입니다.</p>
-    <p class="fade-up">1941년 봄에 강장다창으로 새롭게 창건한 후 몇 번에 걸쳐 이름을 바꾼 뒤에 1950년에 운남성 하관다창으로 개명하여 오늘에 이르고 있습니다.</p>
-    <p class="fade-up">1989년에 하관다창에서 1~2등급의 가장 여린 찻잎으로 만든 100g 중량의 청소타차로, 긴압이 강하게 잘 되어서 지금도 원형이 잘 보존되어 있습니다.</p>
-    <p class="fade-up">오랜 세월 정성스럽게 보관된 하관청소타의 깊은 향과 질감을 끽다거 안우섭님의 차와 함께한 기록과 함께 소개합니다.</p>
+    <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 <br>예로부터 차마고도의 중심지이자 찻잎 집산지로 유명했던 다창입니다.<br>바람이 맑고 청량하기로 유명한 하관지구에서 1902년부터 타차를 생산해온<br>120년이 넘는 유구한 역사가 있는 다창입니다.</p>
+    <p class="fade-up">1941년 봄에 강장다창으로 새롭게 창건한 후 몇 번에 걸쳐 이름을 바꾼 뒤에<br>1950년에 운남성 하관다창으로 개명하여 오늘에 이르고 있습니다.</p>
+    <p class="fade-up">1989년에 하관다창에서 1~2등급의 가장 여린 찻잎으로 만든 100g 중량의 청소타차로,<br>긴압이 강하게 잘 되어서 지금도 원형이 잘 보존되어 있습니다.</p>
+    <p class="fade-up">오랜 세월 정성스럽게 보관된 하관청소타의 깊은 향과 질감을<br>끽다거 안우섭님의 차와 함께한 기록과 함께 소개합니다.</p>
   </div>
 </section>
 
@@ -515,6 +737,46 @@ footer .copyright {
   <img src="./img/kkikda.png" class="story-img fade-up" alt="끽다거">
   <div class="story-rule fade-up"></div>
   <p class="story-desc fade-up">오랜 시간 보이차를 연구하고 수집해온 차 전문기업 끽다거가 현지 답사와 실물 감별을 바탕으로 차의 가치를 보존하였습니다.</p>
+</section>
+
+<!-- MASTER -->
+<section class="master" id="티마스터">
+  <div class="master-top fade-up">
+    <span class="master-label">Tea Master</span>
+    <span class="master-name">안우섭님</span>
+  </div>
+  <div class="master-grid">
+    <div class="master-left fade-up">
+      <img src="./img/people1.jpg" alt="안우섭님">
+    </div>
+    <div class="master-right fade-up">
+      <img src="./img/story1.jpg" class="master-main-img" id="masterMainImg" alt="안우섭님 활동 사진">
+      <div class="master-thumbs">
+        <img src="./img/story1.jpg" class="active" data-src="./img/story1.jpg" alt="썸네일 1">
+        <img src="./img/story2.jpg" data-src="./img/story2.jpg" alt="썸네일 2">
+        <img src="./img/story3.jpg" data-src="./img/story3.jpg" alt="썸네일 3">
+        <img src="./img/story4.jpg" data-src="./img/story4.jpg" alt="썸네일 4">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="market" id="마켓">
+  <div class="market-label fade-up">MARKET</div>
+  <div class="market-line fade-up"></div>
+  <h2 class="market-title fade-up">Market</h2>
+  <div class="market-images fade-up">
+    <img src="./img/company.jpg" class="market-main-img" alt="회사 전경">
+    <div class="market-grid">
+      <img src="./img/auction1.jpg" alt="경매 현장 1">
+      <img src="./img/auction2.jpg" alt="경매 현장 2">
+    </div>
+  </div>
+  <div class="market-links fade-up">
+    <a href="https://www.tokenpost.kr/news/insights/372067" target="_blank" rel="noopener noreferrer" class="market-link-btn">인터뷰 기사 1편</a>
+    <a href="https://www.tokenpost.kr/news/insights/372072" target="_blank" rel="noopener noreferrer" class="market-link-btn">인터뷰 기사 2편</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -552,6 +814,22 @@ document.getElementById('slider-prev').addEventListener('click', () => goToSlide
 document.getElementById('slider-next').addEventListener('click', () => goToSlide(currentSlide + 1));
 sliderDots.forEach(dot => {
   dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index, 10)));
+});
+
+// ===== MASTER THUMBNAILS =====
+const masterMainImg = document.getElementById('masterMainImg');
+const masterThumbs = document.querySelectorAll('.master-thumbs img');
+
+masterThumbs.forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    masterThumbs.forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    masterMainImg.style.opacity = 0;
+    setTimeout(() => {
+      masterMainImg.src = thumb.dataset.src;
+      masterMainImg.style.opacity = 1;
+    }, 300);
+  });
 });
 
 // ===== SCROLL ANIMATIONS (Intersection Observer) =====
