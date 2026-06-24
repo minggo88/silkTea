@@ -38,13 +38,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
-  transition: background 0.3s, backdrop-filter 0.3s;
-}
-
-header.scrolled {
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(12px);
+  transition: background 0.3s, backdrop-filter 0.3s;
 }
 
 header .logo img { height: 36px; }
@@ -78,9 +74,6 @@ header nav a:hover { color: #B8965A; }
   background: #2C1A0E;
   transition: background 0.2s;
 }
-
-header.scrolled .hamburger span,
-header:not(.scrolled) .hamburger.dark span { background: #2C1A0E; }
 
 .mobile-nav {
   position: fixed;
@@ -405,7 +398,8 @@ section { position: relative; }
 
 /* ===== FOOTER ===== */
 footer {
-  background: #2C1A0E;
+  background: #ffffff;
+  border-top: 1px solid #E8E0D5;
   padding: 60px 48px;
   display: flex;
   flex-direction: column;
@@ -415,18 +409,17 @@ footer {
 
 footer img {
   height: 28px;
-  filter: brightness(0) invert(1);
 }
 
 footer .tagline {
   font-size: 14px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(44,26,14,0.6);
   letter-spacing: 1px;
 }
 
 footer .copyright {
   font-size: 12px;
-  color: rgba(255,255,255,0.3);
+  color: rgba(44,26,14,0.35);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -570,18 +563,6 @@ footer .copyright {
 </footer>
 
 <script>
-// ===== HEADER SCROLL STATE =====
-const header = document.getElementById('site-header');
-function updateHeader() {
-  if (window.scrollY > 10) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-}
-window.addEventListener('scroll', updateHeader);
-updateHeader();
-
 // ===== MOBILE NAV =====
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobile-nav');
