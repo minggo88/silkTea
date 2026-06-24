@@ -122,7 +122,7 @@ section { position: relative; }
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./img/img2.jpg');
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./img/tea1.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -191,6 +191,11 @@ section { position: relative; }
 
 .product-left, .product-right {
   width: 50%;
+}
+
+.product-left {
+  display: flex;
+  justify-content: center;
 }
 
 .slider {
@@ -290,12 +295,9 @@ section { position: relative; }
   font-size: 15px;
 }
 
-/* ===== STORY ===== */
-.story {
-  background: #fff;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 140px 20px;
+/* ===== PRODUCT STORY (inline within product section) ===== */
+.product-story {
+  margin-top: 56px;
 }
 
 .story-line {
@@ -312,39 +314,16 @@ section { position: relative; }
   margin-bottom: 16px;
 }
 
-.story-title {
-  font-size: 38px;
-  margin-bottom: 64px;
+.product-story-title {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.story p {
-  font-size: 17px;
-  line-height: 2.0;
+.product-story p {
+  font-size: 15px;
+  line-height: 1.9;
   color: #3D2B1F;
-}
-
-.story-img-row {
-  display: flex;
-  gap: 12px;
-  margin: 48px 0;
-  overflow: hidden;
-}
-
-.story-img-row img {
-  width: calc(50% - 6px);
-  height: 360px;
-  object-fit: cover;
-}
-
-.story-img-full {
-  margin: 48px 0;
-  overflow: hidden;
-}
-
-.story-img-full img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
+  margin-bottom: 16px;
 }
 
 /* ===== MASTER ===== */
@@ -455,10 +434,6 @@ footer .copyright {
   .product-right { padding-left: 0; padding-top: 40px; }
   .slider { max-width: 100%; }
 
-  .story { padding: 80px 24px; }
-  .story-img-row { flex-direction: column; }
-  .story-img-row img { width: 100%; height: 280px; }
-
   .master {
     flex-direction: column;
     padding: 60px 24px;
@@ -477,7 +452,6 @@ footer .copyright {
   <div class="logo"><img src="./img/logo.png" alt="Silk Tealeaf"></div>
   <nav>
     <a href="#소개">소개</a>
-    <a href="#스토리">스토리</a>
     <a href="#티마스터">티마스터</a>
   </nav>
   <div class="hamburger" id="hamburger">
@@ -486,7 +460,6 @@ footer .copyright {
 </header>
 <div class="mobile-nav" id="mobile-nav">
   <a href="#소개">소개</a>
-  <a href="#스토리">스토리</a>
   <a href="#티마스터">티마스터</a>
 </div>
 
@@ -546,32 +519,15 @@ footer .copyright {
       <div class="spec-label">중량</div>
       <div class="spec-value">약 95g</div>
     </div>
-  </div>
-</section>
 
-<!-- STORY -->
-<section class="story" id="스토리">
-  <div class="story-line fade-up"></div>
-  <div class="story-label fade-up">STORY</div>
-  <h2 class="story-title fade-up">하관다창의 역사</h2>
-
-  <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 예로부터 차마고도의 중심지이자 찻잎 집산지로 유명했던 다창입니다. 바람이 맑고 청량하기로 유명한 하관지구에서 1902년부터 타차를 생산해온 120년이 넘는 유구한 역사가 있는 다창입니다.</p>
-
-  <div class="story-img-row">
-    <img src="./img/story1.jpg" class="fade-up" alt="하관다창 사진 1">
-    <img src="./img/story2.jpg" class="fade-up" alt="하관다창 사진 2">
-  </div>
-
-  <p class="fade-up">1941년 봄에 강장다창으로 새롭게 창건한 후 몇 번에 걸쳐 이름을 바꾼 뒤에 1950년에 운남성 하관다창으로 개명하여 오늘에 이르고 있습니다.</p>
-
-  <div class="story-img-full">
-    <img src="./img/story3.jpg" class="fade-up" alt="하관다창 사진 3">
-  </div>
-
-  <p class="fade-up">1989년에 하관다창에서 1~2등급의 가장 여린 찻잎으로 만든 100g 중량의 청소타차로, 긴압이 강하게 잘 되어서 지금도 원형이 잘 보존되어 있습니다.</p>
-
-  <div class="story-img-full">
-    <img src="./img/story4.jpg" class="fade-up" alt="하관다창 사진 4">
+    <div class="product-story">
+      <div class="story-line fade-up"></div>
+      <div class="story-label fade-up">STORY</div>
+      <h3 class="product-story-title fade-up">하관다창의 역사</h3>
+      <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 예로부터 차마고도의 중심지이자 찻잎 집산지로 유명했던 다창입니다. 바람이 맑고 청량하기로 유명한 하관지구에서 1902년부터 타차를 생산해온 120년이 넘는 유구한 역사가 있는 다창입니다.</p>
+      <p class="fade-up">1941년 봄에 강장다창으로 새롭게 창건한 후 몇 번에 걸쳐 이름을 바꾼 뒤에 1950년에 운남성 하관다창으로 개명하여 오늘에 이르고 있습니다.</p>
+      <p class="fade-up">1989년에 하관다창에서 1~2등급의 가장 여린 찻잎으로 만든 100g 중량의 청소타차로, 긴압이 강하게 잘 되어서 지금도 원형이 잘 보존되어 있습니다.</p>
+    </div>
   </div>
 </section>
 
