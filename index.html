@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하관청소타 | Silk Tealeaf</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Noto Serif KR", "Helvetica Neue", Arial, sans-serif;
+  background: #F8F5F0;
+  color: #2C1A0E;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  height: 64px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+header.scrolled {
+  background: rgba(248,245,240,0.95);
+  backdrop-filter: blur(12px);
+}
+
+header .logo img { height: 36px; }
+
+header nav { display: flex; gap: 40px; }
+
+header nav a {
+  font-size: 14px;
+  color: #2C1A0E;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+header nav a:hover { color: #B8965A; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 28px;
+  height: 22px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #2C1A0E;
+  transition: background 0.2s;
+}
+
+header.scrolled .hamburger span,
+header:not(.scrolled) .hamburger.dark span { background: #2C1A0E; }
+
+.mobile-nav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background: rgba(248,245,240,0.98);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  z-index: 99;
+}
+
+.mobile-nav.open { max-height: 260px; }
+
+.mobile-nav a {
+  padding: 18px 0;
+  font-size: 15px;
+  color: #2C1A0E;
+  text-decoration: none;
+  letter-spacing: 1px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #E8E0D5;
+}
+
+/* ===== SECTION GENERIC ===== */
+section { position: relative; }
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./img/img2.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.hero-inner { max-width: 700px; display: flex; flex-direction: column; align-items: center; }
+
+.hero-label {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #B8965A;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: 72px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
+  max-width: 560px;
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.hero-credit {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.45);
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.7);
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+  40% { transform: translate(-50%, -10px); }
+  60% { transform: translate(-50%, -5px); }
+}
+
+/* ===== PRODUCT ===== */
+.product {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 120px 48px;
+  gap: 0;
+}
+
+.product-left, .product-right {
+  width: 50%;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+}
+
+.slider-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: #E8E0D5;
+}
+
+.slider-track img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.slider-track img.active { opacity: 1; }
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: #2C1A0E;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.slider-arrow:hover { background: rgba(255,255,255,0.95); }
+
+.slider-arrow.prev { left: 12px; }
+.slider-arrow.next { right: 12px; }
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.slider-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #E8E0D5;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.slider-dots span.active { background: #B8965A; }
+
+.product-right { padding-left: 60px; }
+
+.product-title { font-size: 42px; margin-bottom: 8px; }
+
+.product-subtitle {
+  font-size: 16px;
+  color: #B8965A;
+  margin-bottom: 48px;
+}
+
+.spec-row {
+  display: flex;
+  border-bottom: 1px solid #E8E0D5;
+  padding: 16px 0;
+}
+
+.spec-label {
+  color: #B8965A;
+  font-size: 14px;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.spec-value {
+  color: #2C1A0E;
+  font-size: 15px;
+}
+
+/* ===== STORY ===== */
+.story {
+  background: #fff;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 20px;
+}
+
+.story-line {
+  width: 40px;
+  height: 0;
+  border-top: 1px solid #B8965A;
+  margin-bottom: 16px;
+}
+
+.story-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #B8965A;
+  margin-bottom: 16px;
+}
+
+.story-title {
+  font-size: 38px;
+  margin-bottom: 64px;
+}
+
+.story p {
+  font-size: 17px;
+  line-height: 2.0;
+  color: #3D2B1F;
+}
+
+.story-img-row {
+  display: flex;
+  gap: 12px;
+  margin: 48px 0;
+  overflow: hidden;
+}
+
+.story-img-row img {
+  width: calc(50% - 6px);
+  height: 360px;
+  object-fit: cover;
+}
+
+.story-img-full {
+  margin: 48px 0;
+  overflow: hidden;
+}
+
+.story-img-full img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+/* ===== MASTER ===== */
+.master {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 120px 48px;
+}
+
+.master-left, .master-right { width: 50%; }
+
+.master-main-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.master-thumbs {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.master-thumbs img {
+  width: calc(25% - 9px);
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+.master-thumbs img:hover,
+.master-thumbs img.active {
+  border: 2px solid #B8965A;
+}
+
+.master-right { padding-left: 60px; }
+
+.master-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #B8965A;
+  margin-bottom: 24px;
+}
+
+.master-name {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.master-affil {
+  font-size: 20px;
+  color: #B8965A;
+  margin-bottom: 40px;
+}
+
+.master-desc {
+  font-size: 16px;
+  line-height: 2.1;
+  color: #3D2B1F;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #2C1A0E;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+footer img {
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+footer .tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+footer .copyright {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  header { padding: 0 20px; }
+  header nav { display: none; }
+  .hamburger { display: flex; }
+
+  .hero-title { font-size: 42px; }
+  .hero-subtitle { font-size: 16px; }
+
+  .product {
+    flex-direction: column;
+    padding: 60px 24px;
+  }
+  .product-left, .product-right { width: 100%; }
+  .product-right { padding-left: 0; padding-top: 40px; }
+  .slider { max-width: 100%; }
+
+  .story { padding: 80px 24px; }
+  .story-img-row { flex-direction: column; }
+  .story-img-row img { width: 100%; height: 280px; }
+
+  .master {
+    flex-direction: column;
+    padding: 60px 24px;
+  }
+  .master-left, .master-right { width: 100%; }
+  .master-right { padding-left: 0; padding-top: 40px; }
+
+  footer { padding: 48px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="logo"><img src="./img/logo.png" alt="Silk Tealeaf"></div>
+  <nav>
+    <a href="#소개">소개</a>
+    <a href="#스토리">스토리</a>
+    <a href="#티마스터">티마스터</a>
+  </nav>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#소개">소개</a>
+  <a href="#스토리">스토리</a>
+  <a href="#티마스터">티마스터</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label fade-up">37년의 시간으로 빚은 보이타차</div>
+    <h1 class="hero-title fade-up">하관청소타</h1>
+    <p class="hero-subtitle fade-up">오랜 세월 정성스럽게 보관된 하관청소타의 깊은 향과 질감을 끽다거 안우섭 선생님의 차와 함께한 기록과 함께 소개합니다.</p>
+    <div class="hero-credit fade-up">Curated by 끽다거 · Delivered by Silk Tealeaf</div>
+  </div>
+  <div class="scroll-arrow">↓</div>
+</section>
+
+<!-- PRODUCT -->
+<section class="product" id="소개">
+  <div class="product-left">
+    <div class="slider fade-up">
+      <div class="slider-track" id="slider-track">
+        <img src="./img/tea1.jpg" class="active" alt="하관청소타 1">
+        <img src="./img/tea2.jpg" alt="하관청소타 2">
+        <img src="./img/tea3.jpg" alt="하관청소타 3">
+        <img src="./img/tea4.jpg" alt="하관청소타 4">
+        <img src="./img/tea5.jpg" alt="하관청소타 5">
+        <button class="slider-arrow prev" id="slider-prev">‹</button>
+        <button class="slider-arrow next" id="slider-next">›</button>
+      </div>
+      <div class="slider-dots" id="slider-dots">
+        <span class="active" data-index="0"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
+        <span data-index="4"></span>
+      </div>
+    </div>
+  </div>
+  <div class="product-right">
+    <h2 class="product-title fade-up">하관청소타</h2>
+    <div class="product-subtitle fade-up">下关青小沱</div>
+    <div class="spec-row fade-up">
+      <div class="spec-label">분류</div>
+      <div class="spec-value">보이청타</div>
+    </div>
+    <div class="spec-row fade-up">
+      <div class="spec-label">생산년도</div>
+      <div class="spec-value">1989년</div>
+    </div>
+    <div class="spec-row fade-up">
+      <div class="spec-label">생산지</div>
+      <div class="spec-value">중국 운남성 대리시 하관다창</div>
+    </div>
+    <div class="spec-row fade-up">
+      <div class="spec-label">차나무</div>
+      <div class="spec-value">교목종 및 관목종 혼합</div>
+    </div>
+    <div class="spec-row fade-up">
+      <div class="spec-label">중량</div>
+      <div class="spec-value">약 95g</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="스토리">
+  <div class="story-line fade-up"></div>
+  <div class="story-label fade-up">STORY</div>
+  <h2 class="story-title fade-up">하관다창의 역사</h2>
+
+  <p class="fade-up">운남성 서쪽 대리시에 있는 하관다창은 예로부터 차마고도의 중심지이자 찻잎 집산지로 유명했던 다창입니다. 바람이 맑고 청량하기로 유명한 하관지구에서 1902년부터 타차를 생산해온 120년이 넘는 유구한 역사가 있는 다창입니다.</p>
+
+  <div class="story-img-row">
+    <img src="./img/story1.jpg" class="fade-up" alt="하관다창 사진 1">
+    <img src="./img/story2.jpg" class="fade-up" alt="하관다창 사진 2">
+  </div>
+
+  <p class="fade-up">1941년 봄에 강장다창으로 새롭게 창건한 후 몇 번에 걸쳐 이름을 바꾼 뒤에 1950년에 운남성 하관다창으로 개명하여 오늘에 이르고 있습니다.</p>
+
+  <div class="story-img-full">
+    <img src="./img/story3.jpg" class="fade-up" alt="하관다창 사진 3">
+  </div>
+
+  <p class="fade-up">1989년에 하관다창에서 1~2등급의 가장 여린 찻잎으로 만든 100g 중량의 청소타차로, 긴압이 강하게 잘 되어서 지금도 원형이 잘 보존되어 있습니다.</p>
+
+  <div class="story-img-full">
+    <img src="./img/story4.jpg" class="fade-up" alt="하관다창 사진 4">
+  </div>
+</section>
+
+<!-- MASTER -->
+<section class="master" id="티마스터">
+  <div class="master-left">
+    <img src="./img/people1.jpg" class="master-main-img fade-up" id="master-main-img" alt="안우섭 선생님">
+    <div class="master-thumbs">
+      <img src="./img/story1.jpg" class="fade-up active" data-src="./img/people1.jpg" alt="썸네일 1">
+      <img src="./img/story2.jpg" class="fade-up" data-src="./img/story2.jpg" alt="썸네일 2">
+      <img src="./img/story3.jpg" class="fade-up" data-src="./img/story3.jpg" alt="썸네일 3">
+      <img src="./img/story4.jpg" class="fade-up" data-src="./img/story4.jpg" alt="썸네일 4">
+    </div>
+  </div>
+  <div class="master-right">
+    <div class="master-label fade-up">TEA MASTER</div>
+    <h2 class="master-name fade-up">안우섭</h2>
+    <div class="master-affil fade-up">끽다거</div>
+    <p class="master-desc fade-up">오랜 시간 보이차를 연구하고 수집해온 차 전문가로, 현지 답사와 실물 감별을 바탕으로 차의 가치를 보존해왔습니다.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="./img/logo.png" alt="Silk Tealeaf">
+  <div class="tagline">끽다거의 차를 엄선하여 전달합니다</div>
+  <div class="copyright">© 2025 Silk Tealeaf. Curated by 끽다거.</div>
+</footer>
+
+<script>
+// ===== HEADER SCROLL STATE =====
+const header = document.getElementById('site-header');
+function updateHeader() {
+  if (window.scrollY > 10) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+}
+window.addEventListener('scroll', updateHeader);
+updateHeader();
+
+// ===== MOBILE NAV =====
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+});
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => mobileNav.classList.remove('open'));
+});
+
+// ===== PRODUCT SLIDER =====
+const sliderImages = document.querySelectorAll('#slider-track img');
+const sliderDots = document.querySelectorAll('#slider-dots span');
+let currentSlide = 0;
+
+function goToSlide(index) {
+  sliderImages[currentSlide].classList.remove('active');
+  sliderDots[currentSlide].classList.remove('active');
+  currentSlide = (index + sliderImages.length) % sliderImages.length;
+  sliderImages[currentSlide].classList.add('active');
+  sliderDots[currentSlide].classList.add('active');
+}
+
+document.getElementById('slider-prev').addEventListener('click', () => goToSlide(currentSlide - 1));
+document.getElementById('slider-next').addEventListener('click', () => goToSlide(currentSlide + 1));
+sliderDots.forEach(dot => {
+  dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index, 10)));
+});
+
+// ===== MASTER GALLERY =====
+const masterMainImg = document.getElementById('master-main-img');
+const masterThumbs = document.querySelectorAll('.master-thumbs img');
+
+masterThumbs.forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    masterThumbs.forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    masterMainImg.style.opacity = 0;
+    setTimeout(() => {
+      masterMainImg.src = thumb.dataset.src;
+      masterMainImg.style.opacity = 1;
+    }, 300);
+  });
+});
+
+// ===== SCROLL ANIMATIONS (Intersection Observer) =====
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+// Apply staggered delay per sibling group
+const groups = new Map();
+fadeEls.forEach(el => {
+  const parent = el.parentElement;
+  if (!groups.has(parent)) groups.set(parent, []);
+  groups.get(parent).push(el);
+});
+
+groups.forEach(group => {
+  group.forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.1) + 's';
+    observer.observe(el);
+  });
+});
+</script>
+
+</body>
+</html>
